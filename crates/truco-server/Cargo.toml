@@ -1,0 +1,22 @@
+[package]
+name = "truco-server"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish = false
+
+[dependencies]
+smallvec = { version = "1.11", features = ["serde"] }
+axum.workspace = true
+rand.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+truco-bot-core.workspace = true
+truco-bots.workspace = true
+truco-policy-bot.workspace = true
+truco-engine.workspace = true
+
+[dev-dependencies]
+tower.workspace = true

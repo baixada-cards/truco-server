@@ -1,0 +1,23 @@
+[workspace]
+members = ["crates/truco-server"]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+authors = ["Elvis Sikora", "Baixada contributors"]
+repository = "https://github.com/baixada-cards/truco-server"
+
+[workspace.dependencies]
+axum = "0.7"
+rand = "0.8"
+serde = { version = "1.0", features = ["derive", "rc"] }
+serde_json = "1.0"
+thiserror = "2.0"
+tokio = { version = "1.0", features = ["macros", "net", "rt-multi-thread", "sync"] }
+tower = { version = "0.5", features = ["util"] }
+truco-engine = { git = "https://github.com/baixada-cards/truco-engine", rev = "5e67d19a710c8396a44dc51e8fae14f12201a3d4" }
+truco-bot-core = { git = "https://github.com/baixada-cards/truco-bots", rev = "b34a0be135daf20bad67a6872022883a9b2c4b69" }
+truco-bots = { git = "https://github.com/baixada-cards/truco-bots", rev = "b34a0be135daf20bad67a6872022883a9b2c4b69" }
+truco-policy-bot = { git = "https://github.com/baixada-cards/truco-bots", rev = "b34a0be135daf20bad67a6872022883a9b2c4b69" }

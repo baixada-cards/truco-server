@@ -1,0 +1,13 @@
+{
+  "format": "baixada-server-contract-lock/v1",
+  "engine": {
+    "repository": "https://github.com/baixada-cards/truco-engine",
+    "revision": "5e67d19a710c8396a44dc51e8fae14f12201a3d4",
+    "packages": ["truco-engine"]
+  },
+  "bots": {
+    "repository": "https://github.com/baixada-cards/truco-bots",
+    "revision": "b34a0be135daf20bad67a6872022883a9b2c4b69",
+    "packages": ["truco-bot-core", "truco-bots", "truco-policy-bot"]
+  }
+}

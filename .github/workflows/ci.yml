@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  merge_group:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  CARGO_NET_GIT_FETCH_WITH_CLI: "true"
+  CARGO_TERM_COLOR: always
+
+jobs:
+  check:
+    name: Check
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Install Socket Firewall
+        env:
+          SFW_SHA256: 4dc46b626a7c5b81c0b54e1984ee53be5a628dbfb2f55ab14e9b04c8a134db6a
+          SFW_URL: https://github.com/SocketDev/sfw-free/releases/download/v1.13.1/sfw-free-linux-x86_64
+        run: |
+          mkdir -p "$RUNNER_TEMP/bin"
+          curl --fail --location --proto '=https' --tlsv1.2 \
+            "$SFW_URL" \
+            --output "$RUNNER_TEMP/sfw"
+          echo "$SFW_SHA256  $RUNNER_TEMP/sfw" | sha256sum --check -
+          install -m 0755 "$RUNNER_TEMP/sfw" "$RUNNER_TEMP/bin/sfw"
+          echo "$RUNNER_TEMP/bin" >> "$GITHUB_PATH"
+
+      - name: Sync locked dependencies
+        run: sfw cargo fetch --locked
+
+      - name: Materialize pinned Truco contract
+        run: python3 scripts/sync_spec.py
+
+      - name: Check
+        run: make check

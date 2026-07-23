@@ -1,0 +1,7 @@
+{
+  "format": "truco-spec-lock/v1",
+  "repository": "https://github.com/baixada-cards/truco-spec.git",
+  "revision": "5142e40a38003b4e4f2cb170b9ffaa33df27ce98",
+  "spec_manifest_sha256": "916891ec9393ce991cbb6d531bdfa2e85b8eee98910caf28a891603d86ac8e50",
+  "version": "1.0.0-rc.1"
+}
