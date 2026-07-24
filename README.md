@@ -31,7 +31,8 @@ cargo run -p truco-server
 
 The service listens on `127.0.0.1:4000` by default. Override it with
 `TRUCO_SERVER_BIND`; the old `TRUCO_ENGINE_SERVICE_BIND` name remains a
-temporary compatibility fallback.
+temporary compatibility fallback. When neither variable is present, Cloud
+Run's `PORT` variable is honored automatically on all interfaces.
 
 Route families and runtime settings are documented in
 [`crates/truco-server/README.md`](crates/truco-server/README.md).
@@ -47,6 +48,14 @@ identity live in the private `baixada-ops` boundary.
 Dev-only state injection and private-view routes are disabled when
 `NODE_ENV=production`. Production deployments should set this explicitly and
 configure session TTL and quota variables described in the crate README.
+
+## Container
+
+The checked-in multi-stage image builds the exact locked dependency graph with
+Socket Firewall, copies only the release binary and runtime certificates into
+the final Debian image, and runs as an unprivileged user. It contains no Cargo
+cache, source checkout, credentials, provider keys, policy bundle, or
+deployment metadata.
 
 ## Versioning
 
