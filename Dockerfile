@@ -4,6 +4,7 @@ FROM rust:1.88.0-bookworm AS build
 
 ARG SFW_VERSION=1.13.1
 ARG SFW_SHA256=4dc46b626a7c5b81c0b54e1984ee53be5a628dbfb2f55ab14e9b04c8a134db6a
+ENV CARGO_NET_GIT_FETCH_WITH_CLI=true
 
 RUN apt-get update \
     && apt-get install --yes --no-install-recommends ca-certificates curl git \
