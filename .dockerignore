@@ -1,0 +1,10 @@
+.git
+.github
+.cache
+target
+*.log
+*.pyc
+__pycache__
+.env
+.env.*
+!.env.example

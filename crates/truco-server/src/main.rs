@@ -7,6 +7,7 @@ use truco_server::{app, AppState};
 async fn main() {
     let bind = std::env::var("TRUCO_SERVER_BIND")
         .or_else(|_| std::env::var("TRUCO_ENGINE_SERVICE_BIND"))
+        .or_else(|_| std::env::var("PORT").map(|port| format!("0.0.0.0:{port}")))
         .unwrap_or_else(|_| "127.0.0.1:4000".to_string());
     let addr = SocketAddr::from_str(&bind).expect("invalid TRUCO_SERVER_BIND");
     let listener = TcpListener::bind(addr)
