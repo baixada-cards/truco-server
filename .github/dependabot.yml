@@ -15,6 +15,11 @@ updates:
       rust:
         patterns:
           - "*"
+    ignore:
+      # rand 0.9+ must move with the engine and bots to keep one RNG trait ABI.
+      - dependency-name: rand
+        versions:
+          - ">= 0.9"
 
   - package-ecosystem: github-actions
     directory: /
