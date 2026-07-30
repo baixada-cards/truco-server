@@ -16,7 +16,23 @@ updates:
         patterns:
           - "*"
     ignore:
-      # rand 0.9+ must move with the engine and bots to keep one RNG trait ABI.
+      # rand is pinned to 0.8 and must move with truco-engine and truco-bots.
+      #
+      # This crate instantiates the bots' Rng-bounded generics with its own
+      # StdRng (bot_host.rs), and the bots hand that RNG to the engine's
+      # analyze_tactical_turn_sampled<R: Rng>. A 0.9 RNG cannot satisfy a 0.8
+      # Rng bound, so all three repos move together or not at all.
+      #
+      # Separately, rand 0.9 rewrote small-range integer sampling, which
+      # changes what SliceRandom::shuffle produces from a given seed. deal.rs
+      # shuffles from seeded_rng, so a bump changes seeded villain sampling and
+      # every subsequent deal in a hosted session. truco-spec's seeded
+      # exploration fixtures record specific selections and would break too;
+      # see "Sampling Determinism" in that repo's exploration CONTRACT.
+      #
+      # The usual security argument does not apply: rand is built without its
+      # serde feature here, so the UniformChar Deserialize fix in 0.9.5 is not
+      # in a compiled code path.
       - dependency-name: rand
         versions:
           - ">= 0.9"
