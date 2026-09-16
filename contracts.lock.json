@@ -7,7 +7,7 @@
   },
   "bots": {
     "repository": "https://github.com/baixada-cards/truco-bots",
-    "revision": "b34a0be135daf20bad67a6872022883a9b2c4b69",
+    "revision": "eb2a1310673bd6dbdb5ebc80ae2c6094d162c84d",
     "packages": ["truco-bot-core", "truco-bots", "truco-policy-bot"]
   }
 }

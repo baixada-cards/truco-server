@@ -1179,7 +1179,7 @@ dependencies = [
 [[package]]
 name = "truco-bot-core"
 version = "0.1.0"
-source = "git+https://github.com/baixada-cards/truco-bots?rev=b34a0be135daf20bad67a6872022883a9b2c4b69#b34a0be135daf20bad67a6872022883a9b2c4b69"
+source = "git+https://github.com/baixada-cards/truco-bots?rev=eb2a1310673bd6dbdb5ebc80ae2c6094d162c84d#eb2a1310673bd6dbdb5ebc80ae2c6094d162c84d"
 dependencies = [
  "rand 0.8.7",
  "serde",
@@ -1192,7 +1192,7 @@ dependencies = [
 [[package]]
 name = "truco-bots"
 version = "0.1.0"
-source = "git+https://github.com/baixada-cards/truco-bots?rev=b34a0be135daf20bad67a6872022883a9b2c4b69#b34a0be135daf20bad67a6872022883a9b2c4b69"
+source = "git+https://github.com/baixada-cards/truco-bots?rev=eb2a1310673bd6dbdb5ebc80ae2c6094d162c84d#eb2a1310673bd6dbdb5ebc80ae2c6094d162c84d"
 dependencies = [
  "rand 0.8.7",
  "reqwest",
@@ -1220,9 +1220,10 @@ dependencies = [
 [[package]]
 name = "truco-policy-bot"
 version = "0.1.0"
-source = "git+https://github.com/baixada-cards/truco-bots?rev=b34a0be135daf20bad67a6872022883a9b2c4b69#b34a0be135daf20bad67a6872022883a9b2c4b69"
+source = "git+https://github.com/baixada-cards/truco-bots?rev=eb2a1310673bd6dbdb5ebc80ae2c6094d162c84d#eb2a1310673bd6dbdb5ebc80ae2c6094d162c84d"
 dependencies = [
  "rand 0.8.7",
+ "rayon",
  "serde",
  "smallvec",
  "thiserror",
